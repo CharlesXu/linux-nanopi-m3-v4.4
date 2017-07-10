@@ -94,7 +94,7 @@
 			cpu-idle-states =<&CPU_SLEEP>;
 		};
 
-		cpu4: cpu@4 {
+		/*cpu4: cpu@4 {
 			device_type = "cpu";
 			compatible = "arm,cortex-a53";
 			reg = <0x0 0x100>;
@@ -128,7 +128,7 @@
 			enable-method = "psci";
 			cpu-release-addr = < 0x1 0xc0010230 >;
 			cpu-idle-states =<&CPU_SLEEP>;
-		};
+		};*/
 
 		cpu-map {
 			cluster0 {
@@ -145,7 +145,7 @@
 					cpu = <&cpu3>;
 				};
 			};
-			cluster1 {
+			/*cluster1 {
 				core0 {
 					cpu = <&cpu4>;
 				};
@@ -158,7 +158,7 @@
 				core3 {
 					cpu = <&cpu7>;
 				};
-			};
+			};*/
 		};
 
 		idle-states {
@@ -178,19 +178,19 @@
 		interrupts = <0 IRQ_P0_PMUIRQ0 0>,
 			     <0 IRQ_P0_PMUIRQ1 0>,
 			     <0 IRQ_P0_PMUIRQ2 0>,
-			     <0 IRQ_P0_PMUIRQ3 0>,
+			     <0 IRQ_P0_PMUIRQ3 0>/*,
 			     <0 IRQ_P1_PMUIRQ0 0>,
 			     <0 IRQ_P1_PMUIRQ1 0>,
 			     <0 IRQ_P1_PMUIRQ2 0>,
-			     <0 IRQ_P1_PMUIRQ3 0>;
+			     <0 IRQ_P1_PMUIRQ3 0>*/;
 		interrupt-affinity = <&cpu0>,
 				     <&cpu1>,
 				     <&cpu2>,
-				     <&cpu3>,
+				     <&cpu3>/*,
 				     <&cpu4>,
 				     <&cpu5>,
 				     <&cpu6>,
-				     <&cpu7>;
+				     <&cpu7>*/;
 	};
 
 	refclk:oscillator {
@@ -426,7 +426,7 @@
 			clocks = <&sdhc2>, <&sdhc2>;
 			pinctrl-names = "default";
 			pinctrl-0 = <&sdmmc2_cclk &sdmmc2_cmd &sdmmc2_bus4>;
-			fifo-detph = <0x20>;
+			fifo-depth = <0x20>;
 			status = "disabled";
 		};
 
@@ -442,7 +442,7 @@
 			clocks = <&sdhc1>, <&sdhc1>;
 			pinctrl-names = "default";
 			pinctrl-0 = <&sdmmc1_cclk &sdmmc1_cmd &sdmmc1_bus4>;
-			fifo-detph = <0x20>;
+			fifo-depth = <0x20>;
 			status = "disabled";
 		};
 
@@ -458,7 +458,7 @@
 			clocks = <&sdhc0>, <&sdhc0>;
 			pinctrl-names = "default";
 			pinctrl-0 = <&sdmmc0_cclk &sdmmc0_cmd &sdmmc0_bus4>;
-			fifo-detph = <0x20>;
+			fifo-depth = <0x20>;
 			status = "disabled";
 		};
 
@@ -586,8 +586,8 @@
 			g-use-dma = <1>;
 			g-rx-fifo-size = <1064>;
 			g-np-tx-fifo-size = <512>;
-			g-tx-fifo-size = <512 512 256 256 256 256 256 256 256
-			    256 256 256 256 256 256>;
+			g-tx-fifo-size = <512 512 512 512 512 256 256 256 256
+			    256 64 64 64 64 64>;
 			status = "disabled";
 		};
 

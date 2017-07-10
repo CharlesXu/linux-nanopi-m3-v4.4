@@ -1111,7 +1111,7 @@ out_free_irq:
 
 out_free_chip:
 	i2c_set_clientdata(client, NULL);
-	kfree(axp228);
+	devm_kfree(&client->dev, axp228);
 
 	return ret;
 }
@@ -1121,7 +1121,7 @@ static int axp_mfd_remove(struct i2c_client *client)
 	struct axp_mfd_chip *chip = i2c_get_clientdata(client);
 
 	axp_mfd_remove_subdevs(chip);
-	kfree(chip);
+	devm_kfree(&client->dev, chip);
 	return 0;
 }
 

@@ -219,7 +219,7 @@ struct drm_connector *nx_drm_connector_create_and_attach(
 	if (err)
 		goto err_encoder;
 
-	connector->encoder = encoder;
+	//connector->encoder = encoder;
 	err = drm_mode_connector_attach_encoder(connector, encoder);
 	if (err) {
 		DRM_ERROR("fail : attach a connector to a encoder\n");

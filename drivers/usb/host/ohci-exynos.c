@@ -97,6 +97,7 @@ static int exynos_ohci_phy_enable(struct device *dev)
 		if (!IS_ERR(rst)) {
 			if (reset_control_status(rst))
 				reset_control_reset(rst);
+			reset_control_put(rst);
 		}
 #endif
 	}
